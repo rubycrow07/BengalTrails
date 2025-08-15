@@ -1,4 +1,3 @@
-// ====== DESTINATIONS AUTO-SCROLL ======
 (() => {
   const scrollContainer = document.querySelector('.scroll-container');
   const destCards = Array.from(document.querySelectorAll('.dest-card'));
@@ -43,7 +42,6 @@
     }
   };
 
-  // ✅ Detect which card is in center
   const getCenteredCardIndex = () => {
     const containerCenter = scrollContainer.scrollLeft + scrollContainer.offsetWidth / 2;
     let closestIndex = 0;
@@ -59,7 +57,6 @@
     return closestIndex;
   };
 
-  // ✅ Pause on scroll, resume after 5s
   scrollContainer.addEventListener('scroll', () => {
     stopAutoScroll();
     if (scrollPauseTimeout) clearTimeout(scrollPauseTimeout);
@@ -69,16 +66,15 @@
     }, 3000);
   });
 
-  // ✅ Pause when hovering on a card & resume from that card
   destCards.forEach((card, idx) => {
     card.addEventListener('mouseenter', () => {
       stopAutoScroll();
       if (scrollPauseTimeout) clearTimeout(scrollPauseTimeout);
-      currentIndex = idx; // set currentIndex to hovered card
+      currentIndex = idx; 
     });
 
     card.addEventListener('mouseleave', () => {
-      startAutoScroll(); // resume auto scroll from this card
+      startAutoScroll(); 
     });
   });
 
@@ -134,8 +130,6 @@ window.addEventListener('load', () => {
   createDots();
   updateDisplay();
 });
-
-
 
 // ====== CURRENCY CONVERTER ======
 (() => {
@@ -272,3 +266,4 @@ window.addEventListener('load', () => {
     setTimeout(() => msg.style.display = 'none', 3000);
   });
 })();
+
