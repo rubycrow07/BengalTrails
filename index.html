@@ -8,7 +8,6 @@
   <link rel="icon" type="image/png" href="img/logo.png" />
   <link rel="stylesheet" href="css/style.css" />
 <script>
-  // Redirect to login if no user is logged in
 const loggedInUser = localStorage.getItem('loggedInUser');
 if (!loggedInUser) {
   window.location.href = 'login.html';
@@ -593,7 +592,6 @@ if (!loggedInUser) {
 <!-- 💱 Toggle Currency Converter Button -->
 <button id="toggle-converter" class="converter-btn">💱</button>
 
-<!-- 💱 Currency Converter Panel -->
 <div id="currency-converter">
   <div class="cc-header">Currency Converter</div>
   <div class="cc-body">
@@ -641,3 +639,4 @@ if (logoutBtn) {
 </script>
 </body>
 </html>
+
