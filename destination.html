@@ -158,7 +158,7 @@ a:hover {
   color: #ffdd59;
 }
 
-/* Scrollbar Styling */
+
 ul::-webkit-scrollbar {
   width: 6px;
 }
@@ -187,7 +187,6 @@ ul::-webkit-scrollbar-track {
     <h3>How to Reach</h3>
     <ul id="dest-reach"></ul>
 
-    <!-- NEW: Info Cards Section -->
     <div class="info-cards">
       <div class="info-card" id="card-cuisine">
         <h4>Local Cuisine</h4>
@@ -212,7 +211,7 @@ const destinations = {
   "darjeeling": {
     name: "Darjeeling",
     description: "Famous for tea estates and Himalayan vistas.",
-    gallery: ["img/Darjeeling1.png","img/Darjeeling2.png"],
+    gallery: ["img/Darjeeling1.jpg","img/Darjeeling2.jpg"],
     hotels: [
       `<a href="https://www.mayfairhotels.com/mayfair-darjeeling/" target="_blank">Mayfair Himalayan Spa</a>`,
       `<a href="https://www.sinclairshotels.com/darjeeling/" target="_blank">Sinclairs Darjeeling</a>`,
@@ -228,7 +227,7 @@ const destinations = {
   "lothian-island": {
     name: "Lothian Island",
     description: "Secluded island paradise with pristine beaches.",
-    gallery: ["img/Lothian1.png","img/Lothian2.png"],
+    gallery: ["img/Lothian1.jpg","img/Lothian2.jpg"],
     hotels: [
       `<a href="https://www.expedia.com/Lothian-Island-Hotels-Beachside-Resort.h1234567.Hotel-Information" target="_blank">Beachside Resort</a>`,
       `<a href="https://www.booking.com/hotel/in/island-view-lodge.html" target="_blank">Island View Lodge</a>`
@@ -243,7 +242,7 @@ const destinations = {
   "shantiniketan": {
     name: "Shantiniketan",
     description: "Rabindranath Tagore's home.",
-    gallery: ["img/Shantiniketan1.png","img/Shantiniketan2.png"],
+    gallery: ["img/Shantiniketan1.jpg","img/Shantiniketan2.jpg"],
     hotels: [
       `<a href="https://www.booking.com/hotel/in/rabindra-bhawan.html" target="_blank">Rabindra Bhawan Hotel</a>`,
       `<a href="https://www.agoda.com/tagore-inn/hotel/bolpur-in.html" target="_blank">Tagore Inn</a>`
@@ -259,7 +258,7 @@ const destinations = {
   "tinchuley": {
     name: "Tinchuley",
     description: "Peaceful hill village with scenic views.",
-    gallery: ["img/Tinchuley1.png","img/Tinchuley2.png"],
+    gallery: ["img/Tinchuley1.jpg","img/Tinchuley2.jpg"],
     hotels: [
       `<a href="https://www.tripadvisor.in/Hotel_Review-g303892-d1234567-Hill_View_Resort-Tinchuley_West_Bengal.html" target="_blank">Hill View Resort</a>`,
       `<a href="https://www.booking.com/hotel/in/tinchuley-homestay.html" target="_blank">Tinchuley Homestay</a>`
@@ -274,7 +273,7 @@ const destinations = {
   "bishnupur": {
     name: "Bishnupur",
     description: "Famous for terracotta temples and rich history.",
-    gallery: ["img/Bishnupur1.png","img/Bishnupur2.png"],
+    gallery: ["img/Bishnupur1.jpg","img/Bishnupur2.jpg"],
     hotels: [
       `<a href="https://annapurnahotel.in/" target="_blank">Hotel Annapurna</a>`,
       `<a href="https://www.hotelsonarbangla.com/projects/joypur-forest/" target="_blank">Hotel Sonar Bangla Joypur Forest</a>`,
@@ -290,7 +289,7 @@ const destinations = {
   "buxa": {
     name: "Buxa",
     description: "Wildlife sanctuary with dense forests and diverse fauna.",
-    gallery: ["img/Buxa1.png","img/Buxa2.png"],
+    gallery: ["img/Buxa1.jpg","img/Buxa2.jpg"],
     hotels: [
       `<a href="https://www.buxavalley.com/" target="_blank">Buxa Valley Homestay</a>`,
       `<a href="https://www.expedia.com/Alipurduar-Hotels-Maa-Greenery-View.h37039287.Hotel-Information" target="_blank">Maa Greenery View</a>`,
@@ -306,7 +305,7 @@ const destinations = {
   "chandraketugarh": {
     name: "Chandraketugarh",
     description: "Archaeological site with ancient ruins and artifacts.",
-    gallery: ["img/Chandraketugarh1.png","img/Chandraketugarh2.png"],
+    gallery: ["img/Chandraketugarh1.jpg","img/Chandraketugarh2.jpg"],
     hotels: [
       `<a href="https://www.booking.com/hotel/in/vedic-village-spa-resort.html" target="_blank">Vedic Village Spa Resort</a>`,
       `<a href="https://www.marriott.com/en-us/hotels/ccuft-fairfield-by-marriott-kolkata/" target="_blank">Fairfield by Marriott Kolkata</a>`,
@@ -322,7 +321,7 @@ const destinations = {
   "garh-panchkot": {
     name: "Garh Panchkot",
     description: "Historical fort ruins amidst scenic hills.",
-    gallery: ["img/Garh Panchkot1.png","img/Garh Panchkot2.png"],
+    gallery: ["img/Garh Panchkot1.jpg","img/Garh Panchkot2.jpg"],
     hotels: [
       `<a href="https://panchetresidency.com/" target="_blank">Panchet Eco Resort</a>`,
       `<a href="https://garhpanchkothotel.com/" target="_blank">Shilpe's Garh Panchkot Hills Agro</a>`,
@@ -338,7 +337,7 @@ const destinations = {
 "jaldapara": {
     name: "Jaldapara",
     description: "Wildlife sanctuary known for one-horned rhinoceros and rich biodiversity.",
-    gallery: ["img/Jaldapara1.png","img/Jaldapara2.png"],
+    gallery: ["img/Jaldapara1.jpg","img/Jaldapara2.jpg"],
     hotels: [
       `<a href="https://wbtdcl.wbtourismgov.in/" target="_blank">Jaldapara Forest Tourist Lodge</a>`,
       `<a href="https://www.hotels.com/ho1155520544/hotel-palacio-regency-alipurduar-india/" target="_blank">Hotel Palacio Regency</a>`,
@@ -354,7 +353,7 @@ const destinations = {
   "jorepokhri": {
     name: "Jorepokhri",
     description: "Tranquil lake surrounded by pine forests near Darjeeling, perfect for a peaceful retreat.",
-    gallery: ["img/Jorepokhri1.png","img/Jorepokhri2.png"],
+    gallery: ["img/Jorepokhri1.jpg","img/Jorepokhri2.jpg"],
     hotels: [
       `<a href="https://darjeeling.gov.in/accommodation/jorepokhri-tourist-lodge/" target="_blank">Jorepokhri Tourist Lodge</a>`,
       `<a href="https://www.heritagebungalows.com/jorpokhri-bungalow/" target="_blank">Heritage Bungalow</a>`,
@@ -370,7 +369,7 @@ const destinations = {
 "kalimpong": {
     name: "Kalimpong",
     description: "Hill station famous for monasteries, flower nurseries, and vibrant local markets.",
-    gallery: ["img/Kalimpong1.png","img/Kalimpong2.png"],
+    gallery: ["img/Kalimpong1.jpg","img/Kalimpong2.jpg"],
     hotels: [
       `<a href="https://www.makemytrip.com/hotels/mountain_view-hotels-kalimpong-rv.html" target="_blank">Mayfair Himalayan Spa Resort</a>`,
       `<a href="https://www.makemytrip.com/hotels/mountain_view-hotels-kalimpong-rv.html" target="_blank">Fortune Resort</a>`,
@@ -386,7 +385,7 @@ const destinations = {
 "mandarmani": {
     name: "Mandarmani",
     description: "Popular beach resort in East Midnapore, known for long sandy beaches and water sports.",
-    gallery: ["img/Mandarmani1.png","img/Mandarmani2.png"],
+    gallery: ["img/Mandarmani1.jpg","img/Mandarmani2.jpg"],
     hotels: [
       `<a href="https://www.hotelsonarbangla.com/mandarmani" target="_blank">Hotel Sonar Bangla</a>`,
       `<a href="https://aqua-marina.in/" target="_blank">Aqua Marina Drive Inn</a>`,
@@ -402,7 +401,7 @@ const destinations = {
 "mayurjharna": {
     name: "Mayurjharna",
     description: "Serene hill retreat known for waterfalls, lush greenery, and eco-tourism in West Bengal.",
-    gallery: ["img/Mayurjharna1.png","img/Mayurjharna2.png"],
+    gallery: ["img/Mayurjharna1.jpg","img/Mayurjharna2.jpg"],
     hotels: [
       `<a href="https://www.mayurjharna.com/" target="_blank">Mayurjharna Eco Resort</a>`,
       `<a href="https://www.ecovillagebackpackers.com/" target="_blank">Sundarban Eco Village</a>`,
@@ -418,7 +417,7 @@ const destinations = {
 "murshidabad": {
     name: "Murshidabad",
     description: "Historic city along the Bhagirathi river, famous for Nawabi heritage, palaces, and rich culture.",
-    gallery: ["img/Murshidabad1.png","img/Murshidabad2.png"],
+    gallery: ["img/Murshidabad1.jpg","img/Murshidabad2.jpg"],
     hotels: [
       `<a href="https://www.nizamat.com/" target="_blank">Nizamat Hotel</a>`,
       `<a href="https://www.kolkatatravel.com/" target="_blank">Kolkata Hotel</a>`,
@@ -434,7 +433,7 @@ const destinations = {
 "samsing": {
     name: "Samsing",
     description: "Scenic tea garden village in Dooars, perfect for trekking and nature immersion.",
-    gallery: ["img/Samsing1.png","img/Samsing2.png"],
+    gallery: ["img/Samsing1.jpg","img/Samsing2.jpg"],
     hotels: [
       `<a href="https://www.samsingecoresort.com/" target="_blank">Samsing Eco Resort</a>`,
       `<a href="https://www.tripadvisor.in/Hotel_Review-g303892-d455606-Reviews-Samsing_Homestay-Samsing_West_Bengal.html" target="_blank">Samsing Homestay</a>`,
@@ -450,7 +449,7 @@ const destinations = {
 "sandakphu": {
     name: "Sandakphu",
     description: "Highest peak in West Bengal, offering panoramic views of the Himalayas and adventure trekking.",
-    gallery: ["img/Sandakphu1.png","img/Sandakphu2.png"],
+    gallery: ["img/Sandakphu1.jpg","img/Sandakphu2.jpg"],
     hotels: [
       `<a href="https://www.singalilajunglecamp.com/" target="_blank">Singalila Jungle Camp</a>`,
       `<a href="https://www.mountainlodge.com/" target="_blank">Mountain Lodge</a>`,
@@ -466,7 +465,7 @@ const destinations = {
 "sundarbans": {
     name: "Sundarbans",
     description: "Largest mangrove forest in the world, home to the Royal Bengal Tiger and diverse wildlife.",
-    gallery: ["img/Sundarbans1.png","img/Sundarbans2.png"],
+    gallery: ["img/Sundarbans1.jpg","img/Sundarbans2.jpg"],
     hotels: [
       `<a href="https://sundarbantigercamp.com/" target="_blank">Sundarban Tiger Camp</a>`,
       `<a href="https://wbtdcl.wbtourismgov.in/" target="_blank">Sajnekhali Tourist Lodge</a>`,
@@ -482,7 +481,7 @@ const destinations = {
 "digha": {
     name: "Digha",
     description: "Popular seaside town in West Bengal, famous for long sandy beaches and picturesque sunsets.",
-    gallery: ["img/Digha1.png", "img/Digha2.png"],
+    gallery: ["img/Digha1.jpg", "img/Digha2.jpg"],
     hotels: [
       `<a href="https://www.hotelsonarbangla.com/digha" target="_blank">Hotel Sonar Bangla</a>`,
       `<a href="https://www.tripadvisor.in/Hotel_Review-g303912-d1184386-Reviews-Seagull_Hotel-Digha_West_Bengal.html" target="_blank">Seagull Hotel</a>`,
@@ -510,8 +509,6 @@ if(place && destinations[place]) {
   document.getElementById('dest-activities').innerHTML = dest.activities.map(a => `<li>${a}</li>`).join('');
   document.getElementById('dest-besttime').innerHTML = `<li>${dest.bestTime}</li>`;
   document.getElementById('dest-reach').innerHTML = `<li>${dest.howToReach}</li>`;
-
-  // Populate new cards
   document.getElementById('dest-cuisine').innerHTML = dest.localCuisine.map(i => `<li>${i}</li>`).join('');
   document.getElementById('dest-festivals').innerHTML = dest.festivals.map(i => `<li>${i}</li>`).join('');
   document.getElementById('dest-tips-card').innerHTML = dest.travelTips.map(t => `<li>${t}</li>`).join('');
