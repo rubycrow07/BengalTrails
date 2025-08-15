@@ -37,13 +37,13 @@
   input[type="password"],
   input[type="text"] {
     width: 100%;
-    padding: 0.85rem 2.5rem 0.85rem 1rem; /* space for eye icon */
+    padding: 0.85rem 2.5rem 0.85rem 1rem; 
     border: 2px solid #ddd;
     border-radius: 8px;
     font-size: 1rem;
     transition: 0.3s;
     box-sizing: border-box;
-    font-family: Arial, sans-serif; /* prevent width jump */
+    font-family: Arial, sans-serif; 
   }
   input:focus {
     border-color: #ff6600;
@@ -87,7 +87,6 @@
   .extra-links a { color: #ff6600; text-decoration: none; font-weight: 600; }
   .extra-links a:hover { text-decoration: underline; color: #e65c00; }
 
-  /* Message Box */
   #message-box {
     position: fixed;
     top: 20px;
@@ -144,7 +143,6 @@ const passwordField = document.getElementById('login-password');
 const toggleEye = document.getElementById('toggle-eye');
 const forgotPassword = document.getElementById('forgot-password');
 
-// Message helper
 function showMessage(text, type='info', duration=4000){
   messageBox.textContent = text;
   messageBox.className='';
@@ -155,7 +153,6 @@ function showMessage(text, type='info', duration=4000){
   }, duration);
 }
 
-// Toggle password visibility
 toggleEye.addEventListener('click', ()=>{
   if(passwordField.type==='password'){
     passwordField.type='text';
@@ -173,7 +170,6 @@ forgotPassword.addEventListener('click', ()=>{
     showMessage('Enter your email to reset password.', 'error', 4000);
     return;
   }
-  // Simulate password retrieval (do NOT show actual password for real apps!)
   showMessage(`A password reset link has been sent to ${email}.`, 'info', 5000);
 });
 
@@ -217,3 +213,4 @@ loginForm.addEventListener('submit', e=>{
 
 </body>
 </html>
+
