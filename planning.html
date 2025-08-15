@@ -124,11 +124,11 @@
   </div>
 
   <script>
-    // Real transport costs
+    
     const travelCosts = {
-      flight: 6200,  // CCU ↔ Bagdogra roundtrip
-      train: 600,    // Sleeper class one-way to north
-      car: 4000      // Approx. local taxi day
+      flight: 6200,  
+      train: 600,    
+      car: 4000      
     };
 
     const destSelect = document.getElementById('trip-destination');
@@ -141,7 +141,7 @@
         `<option value="${travelCosts[m]}">${m.charAt(0).toUpperCase() + m.slice(1)}</option>`
       ).join('');
     }
-    updateTravelModes();  // initialize
+    updateTravelModes();  
 
     function calculateTripCost() {
       const costPerNight = +destSelect.value;
@@ -160,3 +160,4 @@
   </script>
 </body>
 </html>
+
