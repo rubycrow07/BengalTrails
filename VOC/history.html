@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Booking History</title>
+  <link rel="stylesheet" href="style4.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Your Booking History</h1>
+
+    <div id="history-list" class="booking-summary"></div>
+
+    <div class="btn-group">
+      <a href="menu.html" class="btn btn-secondary">Back to Menu</a>
+    </div>
+  </div>
+
+  <script>
+    const bookingHistory = [
+      {
+        flight: "IndiGo F1002",
+        from: "Kolkata",
+        to: "Bihar",
+        date: "2026-11-11",
+        time: "1:00 PM",
+        passengers: 2,
+        pricePerTicket: 3200
+      },
+      {
+        flight: "Air India AI203",
+        from: "Delhi",
+        to: "Mumbai",
+        date: "2025-12-05",
+        time: "10:30 AM",
+        passengers: 1,
+        pricePerTicket: 4500
+      }
+    ];
+
+    function renderHistory() {
+      const historyList = document.getElementById("history-list");
+      historyList.innerHTML = "";
+
+      bookingHistory.forEach((booking, index) => {
+        const card = document.createElement("div");
+        card.className = "booking-card";
+
+        card.innerHTML = `
+          <h3>Booking #${index + 1} - ${booking.flight}</h3>
+          <ul>
+            <li><strong>From:</strong> ${booking.from}</li>
+            <li><strong>To:</strong> ${booking.to}</li>
+            <li><strong>Date:</strong> ${booking.date}</li>
+            <li><strong>Time:</strong> ${booking.time}</li>
+            <li><strong>Passengers:</strong> ${booking.passengers}</li>
+            <li><strong>Price per Ticket:</strong> ₹${booking.pricePerTicket}</li>
+            <li><strong>Total Price:</strong> ₹${booking.pricePerTicket * booking.passengers}</li>
+          </ul>
+          <button class="btn btn-submit download-btn" data-index="${index}">Download This Booking</button>
+        `;
+
+        historyList.appendChild(card);
+      });
+    }
+
+    function downloadBookingPDF(index) {
+      const { jsPDF } = window.jspdf;
+      const booking = bookingHistory[index];
+      const doc = new jsPDF();
+
+      doc.setFontSize(18);
+      doc.text("Booking Details", 14, 20);
+
+      let yPos = 30;
+
+      doc.setFontSize(14);
+      doc.text(`Booking #${index + 1} - ${booking.flight}`, 14, yPos);
+      yPos += 10;
+
+      const details = [
+        `From: ${booking.from}`,
+        `To: ${booking.to}`,
+        `Date: ${booking.date}`,
+        `Time: ${booking.time}`,
+        `Passengers: ${booking.passengers}`,
+        `Price per Ticket: ₹${booking.pricePerTicket}`,
+        `Total Price: ₹${booking.pricePerTicket * booking.passengers}`
+      ];
+
+      doc.setFontSize(12);
+      details.forEach(detail => {
+        doc.text(detail, 20, yPos);
+        yPos += 8;
+      });
+
+      doc.save(`booking-${index + 1}.pdf`);
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      renderHistory();
+
+      document.getElementById("history-list").addEventListener("click", (e) => {
+        if(e.target.classList.contains("download-btn")) {
+          const index = e.target.getAttribute("data-index");
+          downloadBookingPDF(index);
+        }
+      });
+    });
+  </script>
+</body>
+</html>

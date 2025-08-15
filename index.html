@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Plan your perfect trip to West Bengal with BengalTrails. Find top destinations, hotels, flights, and personalized travel plans.">
+  <title>BengalTrails • Your Travel Partner</title>
+  <link rel="icon" type="image/png" href="img/logo.png" />
+  <link rel="stylesheet" href="css/style.css" />
+<script>
+  // Redirect to login if no user is logged in
+const loggedInUser = localStorage.getItem('loggedInUser');
+if (!loggedInUser) {
+  window.location.href = 'login.html';
+}
+</script>
+</head>
+<body>
+  <!-- Header -->
+  <header class="navbar header-section flat-style">
+    <div class="nav-left">
+      <img src="img/logo.png" alt="Logo" />
+      <h1>BengalTrails</h1>
+    </div>
+    <div class="nav-right">
+      <a href="#destinations">Destinations</a>
+      <a href="hotels.html">Hotels</a>
+      <a href="VOC/welcome.html" target="_blank">Flights</a>
+      <a href="#services" class="nav-link">Booking</a>
+      <button id="logout-btn" aria-label="Logout" style="cursor:pointer; background:#ff6600; color:white; border:none; padding:8px 16px; border-radius:6px; font-weight:bold;">Logout</button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero hero-section flat-style">
+    <div class="container hero-content hero-flex">
+      <div class="hero-text">
+        <h1>Plan Your Perfect Trip in West Bengal</h1>
+        <p>Explore West Bengal’s best destinations: serene beaches, lush tea gardens, wildlife sanctuaries, and cultural hotspots—all curated for your perfect trip.</p>
+        <a href="#newsletter" class="btn-cta">Subscribe for Your Next Trip →</a>
+
+      </div>
+      <div class="hero-image">
+        <img src="img/Adventurer.png" alt="Adventurer" />
+      </div>
+    </div>
+  </section>
+<!-- Top Destinations -->
+<section id="destinations" class="destinations top-destinations-section flat-style">
+  <div class="container">
+    <h2>Top Destinations</h2>
+    <div class="scroll-container" id="scrollDest">
+
+      <!-- Destination cards -->
+      <div class="card dest-card">
+        <div class="image-wrapper">
+          <img src="img/Darjeeling.png" alt="Darjeeling" />
+          <a href="destination.html?place=darjeeling" class="arrow-link">
+            <img src="img/arrow.png" alt="Go to page" />
+          </a>
+        </div>
+        <h3>
+          Darjeeling
+          <span class="weather-widget" data-city="Darjeeling">Loading...</span>
+        </h3>
+        <p>Famous for tea estates and Himalayan vistas.</p>
+        <div class="card-footer">
+          <span class="rating">★★★★★</span>
+          <span class="price">₹2,500/night</span>
+        </div>
+      </div>
+
+      <div class="card dest-card">
+        <div class="image-wrapper">
+          <img src="img/Lothian Island.png" alt="Lothian Island" />
+          <a href="destination.html?place=lothian-island" class="arrow-link">
+            <img src="img/arrow.png" alt="Go to page" />
+          </a>
+        </div>
+        <h3>
+          Lothian Island
+          <span class="weather-widget" data-city="Lothian Island">Loading...</span>
+        </h3>
+        <p>Secluded island paradise with pristine beaches.</p>
+        <div class="card-footer">
+          <span class="rating">★★★</span>
+          <span class="price">₹2,000/night</span>
+        </div>
+      </div>
+
+      <div class="card dest-card">
+        <div class="image-wrapper">
+          <img src="img/Shantiniketan.png" alt="Shantiniketan" />
+          <a href="destination.html?place=shantiniketan" class="arrow-link">
+            <img src="img/arrow.png" alt="Go to page" />
+          </a>
+        </div>
+        <h3>
+          Shantiniketan
+          <span class="weather-widget" data-city="Shantiniketan">Loading...</span>
+        </h3>
+        <p>Rabindranath's home.</p>
+        <div class="card-footer">
+          <span class="rating">★★★★★</span>
+          <span class="price">₹1,700/night</span>
+        </div>
+      </div>
+
+      <div class="card dest-card">
+        <div class="image-wrapper">
+          <img src="img/Tinchuley.png" alt="Tinchuley" />
+          <a href="destination.html?place=tinchuley" class="arrow-link">
+            <img src="img/arrow.png" alt="Go to page" />
+          </a>
+        </div>
+        <h3>
+          Tinchuley
+          <span class="weather-widget" data-city="Tinchuley">Loading...</span>
+        </h3>
+        <p>Peaceful hill village with scenic views.</p>
+        <div class="card-footer">
+          <span class="rating">★★★</span>
+          <span class="price">₹1,500/night</span>
+        </div>
+      </div>
+
+      <div class="card dest-card">
+        <div class="image-wrapper">
+          <img src="img/Bishnupur.png" alt="Bishnupur" />
+          <a href="destination.html?place=bishnupur" class="arrow-link">
+            <img src="img/arrow.png" alt="Go to page" />
+          </a>
+        </div>
+        <h3>
+          Bishnupur
+          <span class="weather-widget" data-city="Bishnupur">Loading...</span>
+        </h3>
+        <p>Famous for terracotta temples and rich history.</p>
+        <div class="card-footer">
+          <span class="rating">★★★★</span>
+          <span class="price">₹1,200/night</span>
+        </div>
+      </div>
+
+      <div class="card dest-card">
+        <div class="image-wrapper">
+          <img src="img/Buxa.png" alt="Buxa" />
+          <a href="destination.html?place=buxa" class="arrow-link">
+            <img src="img/arrow.png" alt="Go to page" />
+          </a>
+        </div>
+        <h3>
+          Buxa
+          <span class="weather-widget" data-city="Buxa">Loading...</span>
+        </h3>
+        <p>Wildlife sanctuary with dense forests and diverse fauna.</p>
+        <div class="card-footer">
+          <span class="rating">★★★</span>
+          <span class="price">₹1,100/night</span>
+        </div>
+      </div>
+
+      <div class="card dest-card">
+        <div class="image-wrapper">
+          <img src="img/Chandraketugarh.png" alt="Chandraketugarh" />
+          <a href="destination.html?place=chandraketugarh" class="arrow-link">
+            <img src="img/arrow.png" alt="Go to page" />
+          </a>
+        </div>
+        <h3>
+          Chandraketugarh
+          <span class="weather-widget" data-city="Chandraketugarh">Loading...</span>
+        </h3>
+        <p>Archaeological site with ancient ruins and artifacts.</p>
+        <div class="card-footer">
+          <span class="rating">★★★</span>
+          <span class="price">₹900/night</span>
+        </div>
+      </div>
+
+      <div class="card dest-card">
+        <div class="image-wrapper">
+          <img src="img/Garh Panchkot.png" alt="Garh Panchkot" />
+          <a href="destination.html?place=garh-panchkot" class="arrow-link">
+            <img src="img/arrow.png" alt="Go to page" />
+          </a>
+        </div>
+        <h3>
+          Garh Panchkot
+          <span class="weather-widget" data-city="Garh Panchkot">Loading...</span>
+        </h3>
+        <p>Historical fort ruins amidst scenic hills.</p>
+        <div class="card-footer">
+          <span class="rating">★★★</span>
+          <span class="price">₹1,400/night</span>
+        </div>
+      </div>
+
+      <div class="card dest-card">
+        <div class="image-wrapper">
+          <img src="img/Jaldapara.png" alt="Jaldapara" />
+          <a href="destination.html?place=jaldapara" class="arrow-link">
+            <img src="img/arrow.png" alt="Go to page" />
+          </a>
+        </div>
+        <h3>
+          Jaldapara
+          <span class="weather-widget" data-city="Jaldapara">Loading...</span>
+        </h3>
+        <p>Wildlife sanctuary known for one-horned rhinoceros.</p>
+        <div class="card-footer">
+          <span class="rating">★★★★</span>
+          <span class="price">₹1,300/night</span>
+        </div>
+      </div>
+
+      <div class="card dest-card">
+        <div class="image-wrapper">
+          <img src="img/Jorepokhri.png" alt="Jorepokhri" />
+          <a href="destination.html?place=jorepokhri" class="arrow-link">
+            <img src="img/arrow.png" alt="Go to page" />
+          </a>
+        </div>
+        <h3>
+          Jorepokhri
+          <span class="weather-widget" data-city="Jorepokhri">Loading...</span>
+        </h3>
+        <p>Tranquil lake surrounded by pine forests.</p>
+        <div class="card-footer">
+          <span class="rating">★★★</span>
+          <span class="price">₹1,000/night</span>
+        </div>
+      </div>
+
+      <div class="card dest-card">
+        <div class="image-wrapper">
+          <img src="img/Kalimpong.png" alt="Kalimpong" />
+          <a href="destination.html?place=kalimpong" class="arrow-link">
+            <img src="img/arrow.png" alt="Go to page" />
+          </a>
+        </div>
+        <h3>
+          Kalimpong
+          <span class="weather-widget" data-city="Kalimpong">Loading...</span>
+        </h3>
+        <p>Hill station with monasteries and vibrant markets.</p>
+        <div class="card-footer">
+          <span class="rating">★★★★</span>
+          <span class="price">₹1,800/night</span>
+        </div>
+      </div>
+
+      <div class="card dest-card">
+        <div class="image-wrapper">
+          <img src="img/Mandarmani.png" alt="Mandarmani" />
+          <a href="destination.html?place=mandarmani" class="arrow-link">
+            <img src="img/arrow.png" alt="Go to page" />
+          </a>
+        </div>
+        <h3>
+          Mandarmani
+          <span class="weather-widget" data-city="Mandarmani">Loading...</span>
+        </h3>
+        <p>Popular beach resort with water sports.</p>
+        <div class="card-footer">
+          <span class="rating">★★★★</span>
+          <span class="price">₹1,500/night</span>
+        </div>
+      </div>
+
+      <div class="card dest-card">
+        <div class="image-wrapper">
+          <img src="img/Mayurjharna.png" alt="Mayurjharna" />
+          <a href="destination.html?place=mayurjharna" class="arrow-link">
+            <img src="img/arrow.png" alt="Go to page" />
+          </a>
+        </div>
+        <h3>
+          Mayurjharna
+          <span class="weather-widget" data-city="Mayurjharna">Loading...</span>
+        </h3>
+        <p>Hill retreat known for waterfalls and lush greenery.</p>
+        <div class="card-footer">
+          <span class="rating">★★★</span>
+          <span class="price">₹1,200/night</span>
+        </div>
+      </div>
+
+      <div class="card dest-card">
+        <div class="image-wrapper">
+          <img src="img/Murshidabad.png" alt="Murshidabad" />
+          <a href="destination.html?place=murshidabad" class="arrow-link">
+            <img src="img/arrow.png" alt="Go to page" />
+          </a>
+        </div>
+        <h3>
+          Murshidabad
+          <span class="weather-widget" data-city="Murshidabad">Loading...</span>
+        </h3>
+        <p>Historic city famous for Nawabi heritage and palaces.</p>
+        <div class="card-footer">
+          <span class="rating">★★★★</span>
+          <span class="price">₹1,400/night</span>
+        </div>
+      </div>
+
+      <div class="card dest-card">
+        <div class="image-wrapper">
+          <img src="img/Samsing.png" alt="Samsing" />
+          <a href="destination.html?place=samsing" class="arrow-link">
+            <img src="img/arrow.png" alt="Go to page" />
+          </a>
+        </div>
+        <h3>
+          Samsing
+          <span class="weather-widget" data-city="Samsing">Loading...</span>
+        </h3>
+        <p>Scenic tea garden village perfect for trekking.</p>
+        <div class="card-footer">
+          <span class="rating">★★★</span>
+          <span class="price">₹1,000/night</span>
+        </div>
+      </div>
+
+      <div class="card dest-card">
+        <div class="image-wrapper">
+          <img src="img/Sandakphu.png" alt="Sandakphu" />
+          <a href="destination.html?place=sandakphu" class="arrow-link">
+            <img src="img/arrow.png" alt="Go to page" />
+          </a>
+        </div>
+        <h3>
+          Sandakphu
+          <span class="weather-widget" data-city="Sandakphu">Loading...</span>
+        </h3>
+        <p>Highest peak in West Bengal, great for adventure trekking.</p>
+        <div class="card-footer">
+          <span class="rating">★★★★★</span>
+          <span class="price">₹2,200/night</span>
+        </div>
+      </div>
+
+      <div class="card dest-card">
+        <div class="image-wrapper">
+          <img src="img/Sundarbans.png" alt="Sundarbans" />
+          <a href="destination.html?place=sundarbans" class="arrow-link">
+            <img src="img/arrow.png" alt="Go to page" />
+          </a>
+        </div>
+        <h3>
+          Sundarbans
+          <span class="weather-widget" data-city="Sundarbans">Loading...</span>
+        </h3>
+        <p>Largest mangrove forest and home to the Royal Bengal tiger.</p>
+        <div class="card-footer">
+          <span class="rating">★★★★</span>
+          <span class="price">₹1,900/night</span>
+        </div>
+      </div>
+
+      <div class="card dest-card">
+        <div class="image-wrapper">
+          <img src="img/Digha.png" alt="Digha" />
+          <a href="destination.html?place=digha" class="arrow-link">
+            <img src="img/arrow.png" alt="Go to page" />
+          </a>
+        </div>
+        <h3>
+          Digha
+          <span class="weather-widget" data-city="Digha">Loading...</span>
+        </h3>
+        <p>Relaxing beachside destination for families.</p>
+        <div class="card-footer">
+          <span class="rating">★★★★</span>
+          <span class="price">₹1,000/night</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  <section class="testimonials travelers-say-section flat-style">
+    <div class="container side-by-side-wrapper">
+      <!-- Left: Testimonials -->
+      <div class="testimonial-section">
+        <h2 class="testimonial-heading">Hear From Our Happy Travelers</h2>
+        <div class="testimonials-carousel">
+          <button class="carousel-arrow prev" aria-label="Previous testimonial">&#10094;</button>
+
+          <div class="testi-grid-wrapper">
+            <div class="testi-grid">
+              <!-- Testimonial Cards -->
+              <div class="testi-card active">
+                <img src="img/testimonial1.jpg" alt="Riya" />
+                <blockquote>“An unforgettable journey…”</blockquote>
+                <cite>— Riya, Kolkata</cite>
+              </div>
+              <div class="testi-card">
+                <img src="img/testimonial2.jpg" alt="Arjun" />
+                <blockquote>“The trip to Darjeeling was seamless…”</blockquote>
+                <cite>— Arjun, Siliguri</cite>
+              </div>
+              <div class="testi-card">
+                <img src="img/testimonial3.jpg" alt="Sunita" />
+                <blockquote>“Exploring Sundarbans with their guided tours was an eye-opening experience…”</blockquote>
+                <cite>— Sunita, Howrah</cite>
+              </div>
+              <div class="testi-card">
+                <img src="img/testimonial4.jpg" alt="Rahul" />
+                <blockquote>“Loved the beach vibe at Digha…”</blockquote>
+                <cite>— Rahul, Durgapur</cite>
+              </div>
+              <div class="testi-card">
+                <img src="img/testimonial5.jpg" alt="Anita" />
+                <blockquote>“Bishnupur’s terracotta temples were fantastic…”</blockquote>
+                <cite>— Anita, Bardhaman</cite>
+              </div>
+              <div class="testi-card">
+                <img src="img/testimonial6.jpg" alt="Sourav" />
+                <blockquote>“Our family trip to Mandarmani was perfect!”</blockquote>
+                <cite>— Sourav, Kolkata</cite>
+              </div>
+              <div class="testi-card">
+                <img src="img/testimonial7.jpg" alt="Meera" />
+                <blockquote>“The peaceful ambiance of Tinchuley…”</blockquote>
+                <cite>— Meera, Asansol</cite>
+              </div>
+              <div class="testi-card">
+                <img src="img/testimonial8.jpg" alt="Amit" />
+                <blockquote>“Thanks for organizing a smooth and enjoyable trip to Kalimpong…”</blockquote>
+                <cite>— Amit, Siliguri</cite>
+              </div>
+              <div class="testi-card">
+                <img src="img/testimonial9.jpg" alt="Priya" />
+                <blockquote>“Jaldapara safari was thrilling!”</blockquote>
+                <cite>— Priya, Jalpaiguri</cite>
+              </div>
+              <div class="testi-card">
+                <img src="img/testimonial10.jpg" alt="Dev" />
+                <blockquote>“Chandraketugarh's archaeological tours were fascinating…”</blockquote>
+                <cite>— Dev, Kolkata</cite>
+              </div>
+
+              <!-- New Testimonials for added destinations -->
+              <div class="testi-card">
+                <img src="img/testimonial11.jpg" alt="Kabir" />
+                <blockquote>“Trekking to Sandakphu gave me breathtaking Himalayan views!”</blockquote>
+                <cite>— Kabir, Darjeeling</cite>
+              </div>
+              <div class="testi-card">
+                <img src="img/testimonial12.jpg" alt="Nisha" />
+                <blockquote>“Samsing’s tea gardens were a perfect peaceful getaway.”</blockquote>
+                <cite>— Nisha, Siliguri</cite>
+              </div>
+              <div class="testi-card">
+                <img src="img/testimonial13.jpg" alt="Raj" />
+                <blockquote>“The wildlife at Buxa Sanctuary amazed us.”</blockquote>
+                <cite>— Raj, Jalpaiguri</cite>
+              </div>
+              <div class="testi-card">
+                <img src="img/testimonial14.jpg" alt="Karan" />
+                <blockquote>“Lothian Island’s beaches were untouched and beautiful.”</blockquote>
+                <cite>— Karan, Kolkata</cite>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-arrow next" aria-label="Next testimonial">&#10095;</button>
+          <div class="carousel-dots"></div>
+        </div>
+      </div>
+
+<!-- Right: Events -->
+<div class="events-section">
+  <h2>Upcoming Festivals & Events</h2>
+  <div class="events-scroll-container">
+    <div class="events-card">
+      <strong>Darjeeling Tea Festival:</strong> Sept 5 – Sept 7, Darjeeling
+    </div>
+    <div class="events-card">
+      <strong>Sandakphu Trekking Challenge:</strong> Oct 10 – Oct 15, Sandakphu
+    </div>
+    <div class="events-card">
+      <strong>Shantiniketan Basanta Utsav:</strong> March 25, Shantiniketan
+    </div>
+    <div class="events-card">
+      <strong>Mandarmani Beach Festival:</strong> Dec 20 – Dec 22, Mandarmani
+    </div>
+    <div class="events-card">
+      <strong>Sundarbans Tiger Safari Week:</strong> Nov 1 – Nov 7, Sundarbans
+    </div>
+    <div class="events-card">
+      <strong>Kalimpong Flower Show:</strong> Aug 15 – Aug 18, Kalimpong
+    </div>
+    <div class="events-card">
+      <strong>Jaldapara Rhino Festival:</strong> Oct 18 – Oct 20, Jaldapara
+    </div>
+    <div class="events-card">
+      <strong>Digha Beach Carnival:</strong> Dec 28 – Dec 31, Digha
+    </div>
+    <div class="events-card">
+      <strong>Bishnupur Terracotta Festival:</strong> Nov 10 – Nov 12, Bishnupur
+    </div>
+    <div class="events-card">
+      <strong>Lothian Island Eco-Festival:</strong> Feb 5 – Feb 7, Lothian Island
+    </div>
+  </div>
+</div>
+  </section>
+
+<!-- Services -->
+<section id="services" class="services our-services-section flat-style">
+    <div class="container">
+      <h2>Travel Made Easy</h2>
+      <div class="services-grid">
+        <div class="service">
+          <span class="emoji">✈️</span>
+          <h3><a href="VOC/welcome.html" style="text-decoration: none; color: inherit;">Best Flights</a></h3>
+          <p>Find the cheapest fares and hassle-free bookings.</p>
+        </div>
+        <div class="service">
+          <span class="emoji">🏨</span>
+          <h3><a href="hotels.html" style="text-decoration: none; color: inherit;">Best Hotels</a></h3>
+          <p>Handpicked stays from cozy homestays to luxury hotels.</p>
+        </div>
+        <div class="service">
+          <span class="emoji">📋</span>
+          <h3><a href="planning.html" style="text-decoration: none; color: inherit;">Travel Planning</a></h3>
+          <p>Custom itineraries, expert tips, and 24/7 support for every traveler.</p>
+        </div>
+      </div>
+    </div>
+</section>
+  <!-- Newsletter -->
+    <section id="newsletter" class="newsletter dreaming-next-trip-section flat-style">
+      <div class="container news-inner">
+        <h2>Ready for Your Next Adventure?</h2>
+        <p>Sign up to get exclusive travel tips, deals, and curated itineraries straight to your inbox.</p>
+
+        <form id="subscribe-form">
+          <input type="email" id="email" placeholder="Enter your email" required />
+          <button type="submit" class="btn-solid">Subscribe</button>
+        </form>
+        <p id="subscription-msg" style="margin-top:10px; color:green; display:none;">Thank you for subscribing!</p>
+      </div>
+    </section>
+
+
+
+  <!-- Footer -->
+  <footer class="site-footer footer-section flat-style">
+    <div class="container footer-top">
+      <div class="footer-about">
+        <img src="img/logo.png" alt="BengalTrails" />
+        <h3>BengalTrails</h3>
+        <p>Your trusted West Bengal travel experts.</p>
+      </div>
+
+      <div class="footer-links-group">
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="#">About</a>
+          <a href="#">Careers</a>
+          <a href="#">Blog</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <a href="#">Help / FAQ</a>
+          <a href="#">Press</a>
+          <a href="#">Customer Service</a>
+          <a href="#">Affiliates</a>
+        </div>
+        <div class="footer-col">
+          <h4>More</h4>
+          <a href="#">Airlines Feed</a>
+          <a href="#">Low-Fare Tips</a>
+          <a href="#">DirectPoint</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom container">
+      <p>© 2025 BengalTrails. All rights reserved.</p>
+      <div class="social-icons">
+        <a href="#"><img src="img/instagram.svg" alt="Instagram" /></a>
+        <a href="#"><img src="img/x.svg" alt="Twitter" /></a>
+        <a href="#"><img src="img/facebook.svg" alt="Facebook" /></a>
+        <a href="#"><img src="img/whatsapp.svg" alt="WhatsApp" /></a>
+      </div>
+    </div>
+  </footer>
+
+<!-- 💱 Toggle Currency Converter Button -->
+<button id="toggle-converter" class="converter-btn">💱</button>
+
+<!-- 💱 Currency Converter Panel -->
+<div id="currency-converter">
+  <div class="cc-header">Currency Converter</div>
+  <div class="cc-body">
+    <label for="from-currency">From:</label>
+    <select id="from-currency">
+      <option value="INR" selected>INR</option>
+      <option value="USD">USD</option>
+      <option value="EUR">EUR</option>
+      <option value="GBP">GBP</option>
+      <option value="JPY">JPY</option>
+    </select>
+
+    <label for="to-currency">To:</label>
+    <select id="to-currency">
+      <option value="USD" selected>USD</option>
+      <option value="INR">INR</option>
+      <option value="EUR">EUR</option>
+      <option value="GBP">GBP</option>
+      <option value="JPY">JPY</option>
+    </select>
+
+    <label for="amount" id="amount-label">Amount:</label>
+    <input type="number" id="amount" value="1" min="0" />
+    <div id="conversion-result" style="display:none; font-weight: bold; margin-top: 5px;"></div>
+
+    <button id="convert-btn" class="btn-solid">Convert</button>
+  </div>
+</div>
+
+  <!-- Back to Top Button -->
+  <button id="back-to-top" aria-label="Back to top" title="Back to top" style="display:none;">
+    <img src="img/up-arrow.svg" alt="Up arrow" />
+  </button>
+
+<script src="js/main.js" defer></script>
+<script>
+const logoutBtn = document.getElementById('logout-btn');
+
+if (logoutBtn) {
+  logoutBtn.addEventListener('click', () => {
+    localStorage.removeItem('loggedInUser');
+    window.location.href = 'login.html';
+  });
+}
+</script>
+</body>
+</html>

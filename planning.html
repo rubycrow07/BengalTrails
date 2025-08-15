@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trip Cost Estimator • BengalTrails</title>
+  <link rel="icon" type="image/png" href="img/logo.png" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    body {
+      background: linear-gradient(135deg, #a0caff, #d9bcf7);
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .glass-card {
+      backdrop-filter: blur(20px) saturate(180%);
+      background-color: rgba(255,255,255,0.3);
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.5);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      width: 90%;
+      max-width: 400px;
+      padding: 2rem;
+      color: #fff;
+      text-align: center;
+      animation: fadeIn 0.6s ease-out;
+    }
+    @keyframes fadeIn {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    .glass-card h2 {
+      margin-bottom: 1rem;
+      letter-spacing: 1px;
+    }
+    .glass-card label {
+      display: block;
+      text-align: left;
+      font-size: 0.9rem;
+      margin: 0.5rem 0 0.2rem;
+    }
+    .glass-card select,
+    .glass-card input {
+      width: 100%;
+      padding: 0.6rem;
+      border: none;
+      border-radius: 8px;
+      margin-bottom: 0.8rem;
+      font-size: 1rem;
+    }
+.btn-solid {
+  background: linear-gradient(135deg, #ff6600, #ff9933);
+  color: white;
+  border: none;
+  padding: 0.8rem 1.2rem;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(255, 102, 0, 0.4);
+}
+
+.btn-solid:hover {
+  background: linear-gradient(135deg, #ff9933, #ff6600);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(255, 102, 0, 0.5);
+}
+
+    #trip-cost-result {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="glass-card">
+    <h2>Trip Cost Estimator</h2>
+    <form id="trip-estimator">
+      <label>Destination (per night cost):</label>
+      <select id="trip-destination">
+        <option value="1800" data-modes="train,car">Bishnupur</option>
+        <option value="2500" data-modes="train,car">Buxa</option>
+        <option value="2200" data-modes="train,car">Chandraketugarh</option>
+        <option value="2000" data-modes="train,car">Panchkot</option>
+        <option value="2300" data-modes="train,car">Jaldapara</option>
+        <option value="3000" data-modes="flight,train,car">Kalimpong</option>
+        <option value="1800" data-modes="train,car">Namkhana (Lothian Island)</option>
+        <option value="2000" data-modes="train,car">Mandarmani</option>
+        <option value="1700" data-modes="train,car">Murshidabad</option>
+        <option value="2100" data-modes="train,car">Samsing</option>
+        <option value="3200" data-modes="flight,train,car">Sandakphu</option>
+        <option value="1900" data-modes="train,car">Sundarbans</option>
+      </select>
+
+      <label>Days:</label>
+      <input type="number" id="trip-days" value="1" min="1" />
+
+      <label>Hotel Class:</label>
+      <select id="hotel-class">
+        <option value="1">Standard</option>
+        <option value="1.5">Deluxe (+50%)</option>
+        <option value="2">Luxury (+100%)</option>
+      </select>
+
+      <label>Travel Mode & Cost:</label>
+      <select id="travel-mode">
+        <!-- Game-time selection -->
+      </select>
+
+      <label>Number of Travelers:</label>
+      <input type="number" id="trip-people" value="1" min="1" />
+
+      <button type="button" onclick="calculateTripCost()" class="btn-solid">Estimate</button>
+    </form>
+
+    <div id="trip-cost-result"></div>
+  </div>
+
+  <script>
+    // Real transport costs
+    const travelCosts = {
+      flight: 6200,  // CCU ↔ Bagdogra roundtrip
+      train: 600,    // Sleeper class one-way to north
+      car: 4000      // Approx. local taxi day
+    };
+
+    const destSelect = document.getElementById('trip-destination');
+    const modeSelect = document.getElementById('travel-mode');
+
+    destSelect.addEventListener('change', updateTravelModes);
+    function updateTravelModes() {
+      const modes = destSelect.selectedOptions[0].dataset.modes.split(',');
+      modeSelect.innerHTML = modes.map(m => 
+        `<option value="${travelCosts[m]}">${m.charAt(0).toUpperCase() + m.slice(1)}</option>`
+      ).join('');
+    }
+    updateTravelModes();  // initialize
+
+    function calculateTripCost() {
+      const costPerNight = +destSelect.value;
+      const days = +document.getElementById('trip-days').value;
+      const hotelClass = +document.getElementById('hotel-class').value;
+      const travelCost = +modeSelect.value;
+      const people = +document.getElementById('trip-people').value;
+
+      const hotelCost = costPerNight * days * hotelClass;
+      const total = hotelCost + travelCost;
+      const perPerson = (total / people).toFixed(2);
+
+      document.getElementById('trip-cost-result').textContent =
+        `Total: ₹${total.toLocaleString()} • Per Person: ₹${perPerson}`;
+    }
+  </script>
+</body>
+</html>

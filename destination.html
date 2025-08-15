@@ -1,0 +1,524 @@
+<!-- destination.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Destination Details • BengalTrails</title>
+<link rel="icon" type="image/png" href="img/logo.png" />
+<link rel="stylesheet" href="css/style.css">
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #8ac6ff, #d9bcf7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.glass-card {
+  width: 95%;
+  max-width: 1000px;
+  background-color: rgba(255,255,255,0.25);
+  backdrop-filter: blur(25px) saturate(180%);
+  border-radius: 25px;
+  border: 1px solid rgba(255,255,255,0.4);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+  padding: 2rem;
+  color: #fff;
+  animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+h1, h3, h4 {
+  text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+
+#dest-name {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: 1px;
+  color: #ffeaa7;
+}
+
+#dest-description {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  color: #f7f1e3;
+  line-height: 1.5;
+}
+
+#dest-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+#dest-gallery img {
+  width: 220px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#dest-gallery img:hover {
+  transform: scale(1.08);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 1rem;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+ul li {
+  margin-bottom: 0.6rem;
+  padding: 0.6rem 1rem;
+  background: rgba(0,0,0,0.25);
+  border-radius: 12px;
+  transition: background 0.3s ease;
+  color: #fff;
+  font-weight: 500;
+}
+
+ul li:hover {
+  background: rgba(255,255,255,0.2);
+  color: #ffdd59;
+}
+
+a {
+  color: #ffd32a;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.info-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.info-card {
+  flex: 1 1 250px;
+  min-width: 250px;
+  background: rgba(0,0,0,0.25);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 1rem;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.info-card:hover {
+  transform: translateY(-5px);
+  background: rgba(0,0,0,0.35);
+}
+
+.info-card h4 {
+  margin-bottom: 0.8rem;
+  color: #ffeaa7;
+  text-align: center;
+}
+
+.info-card ul li {
+  background: rgba(255,255,255,0.1);
+  margin-bottom: 0.4rem;
+  padding: 0.5rem 0.8rem;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 0.95rem;
+  color: #fff;
+  font-weight: 500;
+}
+
+.info-card ul li:hover {
+  background: rgba(255,255,255,0.25);
+  color: #ffdd59;
+}
+
+/* Scrollbar Styling */
+ul::-webkit-scrollbar {
+  width: 6px;
+}
+ul::-webkit-scrollbar-thumb {
+  background-color: rgba(255,255,255,0.3);
+  border-radius: 10px;
+}
+ul::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0.1);
+  border-radius: 10px;
+}
+</style>
+
+</head>
+<body>
+  <div class="glass-card" id="destination-container">
+    <h1 id="dest-name"></h1>
+    <p id="dest-description"></p>
+    <div id="dest-gallery"></div>
+    <h3>Nearby Hotels & Restaurants</h3>
+    <ul id="dest-hotels"></ul>
+    <h3>Things to Do</h3>
+    <ul id="dest-activities"></ul>
+    <h3>Best Time to Visit</h3>
+    <ul id="dest-besttime"></ul>
+    <h3>How to Reach</h3>
+    <ul id="dest-reach"></ul>
+
+    <!-- NEW: Info Cards Section -->
+    <div class="info-cards">
+      <div class="info-card" id="card-cuisine">
+        <h4>Local Cuisine</h4>
+        <ul id="dest-cuisine"></ul>
+      </div>
+
+      <div class="info-card" id="card-festivals">
+        <h4>Festivals & Events</h4>
+        <ul id="dest-festivals"></ul>
+      </div>
+
+      <div class="info-card" id="card-tips">
+        <h4>Travel Tips</h4>
+        <ul id="dest-tips-card"></ul>
+      </div>
+    </div>
+
+  </div>
+
+<script>
+const destinations = {
+  "darjeeling": {
+    name: "Darjeeling",
+    description: "Famous for tea estates and Himalayan vistas.",
+    gallery: ["img/Darjeeling1.png","img/Darjeeling2.png"],
+    hotels: [
+      `<a href="https://www.mayfairhotels.com/mayfair-darjeeling/" target="_blank">Mayfair Himalayan Spa</a>`,
+      `<a href="https://www.sinclairshotels.com/darjeeling/" target="_blank">Sinclairs Darjeeling</a>`,
+      `<a href="https://www.dekeling.com/" target="_blank">Dekeling Hotel</a>`
+    ],
+    activities: ["Tea Garden Tour", "Tiger Hill Sunrise", "Darjeeling Himalayan Railway Ride", "Peace Pagoda Visit"],
+    bestTime: "March to May and September to November for pleasant weather and clear mountain views.",
+    howToReach: "By Air: Bagdogra Airport (~70 km). By Train: NJP (New Jalpaiguri) station, then taxi or shared jeep. By Road: Direct buses or cabs from Siliguri.",
+    localCuisine: ["Momos", "Thukpa", "Darjeeling Tea", "Churpee Cheese"],
+    festivals: ["Darjeeling Carnival", "Losar Festival", "Independence Day Parade at Chowrasta"],
+    travelTips: ["Carry warm clothes even in summer mornings.", "Book hotels in advance during peak season.", "Use shared jeeps for local sightseeing to save cost."]
+  },
+  "lothian-island": {
+    name: "Lothian Island",
+    description: "Secluded island paradise with pristine beaches.",
+    gallery: ["img/Lothian1.png","img/Lothian2.png"],
+    hotels: [
+      `<a href="https://www.expedia.com/Lothian-Island-Hotels-Beachside-Resort.h1234567.Hotel-Information" target="_blank">Beachside Resort</a>`,
+      `<a href="https://www.booking.com/hotel/in/island-view-lodge.html" target="_blank">Island View Lodge</a>`
+    ],
+    activities: ["Beach Walks", "Snorkeling", "Fishing", "Bird Watching"],
+    bestTime: "November to February is ideal for sunny weather and calm seas.",
+    howToReach: "You can reach Lothian Island by first getting to Digha, the nearest mainland point, via air (Kolkata Airport to Digha by road, ~180 km), train (Digha Railway Station), or bus/car. From Digha, take a local ferry or boat to Lothian Island. Check boat schedules in advance.",
+    localCuisine: ["Fresh Seafood", "Coconut-based dishes", "Local fish curry", "Island fruits"],
+    festivals: ["Island Beach Festival", "Seafood Carnival"],
+    travelTips: ["Carry sunscreen and hats.", "Carry water and snacks.", "Check ferry schedules before visiting."]
+  },
+  "shantiniketan": {
+    name: "Shantiniketan",
+    description: "Rabindranath Tagore's home.",
+    gallery: ["img/Shantiniketan1.png","img/Shantiniketan2.png"],
+    hotels: [
+      `<a href="https://www.booking.com/hotel/in/rabindra-bhawan.html" target="_blank">Rabindra Bhawan Hotel</a>`,
+      `<a href="https://www.agoda.com/tagore-inn/hotel/bolpur-in.html" target="_blank">Tagore Inn</a>`
+    ],
+    activities: ["Visiting Visva-Bharati University", "Cultural Programs", "Art Galleries", "Craft Workshops"],
+    bestTime: "October to March for pleasant weather and cultural events.",
+    howToReach: "You can reach Shantiniketan by first getting to Bolpur, the nearest town, via air (Kolkata Airport, ~200 km), train (Bolpur Shantiniketan Railway Station), or bus/car. From Bolpur, local rickshaws or taxis take you to Shantiniketan.",
+    localCuisine: ["Pithe & Payesh", "Rosogolla", "Local Bengali thalis", "Seasonal sweets"],
+    festivals: ["Poush Mela", "Basanta Utsav", "Rabindra Jayanti"],
+    travelTips: ["Carry comfortable walking shoes.", "Respect local customs in university areas.", "Visit cultural events for a richer experience."]
+  },
+
+  "tinchuley": {
+    name: "Tinchuley",
+    description: "Peaceful hill village with scenic views.",
+    gallery: ["img/Tinchuley1.png","img/Tinchuley2.png"],
+    hotels: [
+      `<a href="https://www.tripadvisor.in/Hotel_Review-g303892-d1234567-Hill_View_Resort-Tinchuley_West_Bengal.html" target="_blank">Hill View Resort</a>`,
+      `<a href="https://www.booking.com/hotel/in/tinchuley-homestay.html" target="_blank">Tinchuley Homestay</a>`
+    ],
+    activities: ["Nature Walks", "Photography", "Sunset Viewing", "Tea Garden Visits"],
+    bestTime: "March to May and September to November for clear skies and mild weather.",
+    howToReach: "You can reach Tinchuley via Bagdogra Airport (~85 km) or New Jalpaiguri Railway Station, then hire a taxi or take local buses to Darjeeling, Siliguri, and finally Tinchuley. Roads are scenic but winding; travel carefully.",
+    localCuisine: ["Local Hill Tea", "Momos", "Thukpa", "Bengali Sweets"],
+    festivals: ["Tinchuley Tea Festival", "Local Cultural Fairs"],
+    travelTips: ["Carry warm clothes in evenings.", "Book accommodations in advance during peak season.", "Carry water and snacks during hikes."]
+  },
+  "bishnupur": {
+    name: "Bishnupur",
+    description: "Famous for terracotta temples and rich history.",
+    gallery: ["img/Bishnupur1.png","img/Bishnupur2.png"],
+    hotels: [
+      `<a href="https://annapurnahotel.in/" target="_blank">Hotel Annapurna</a>`,
+      `<a href="https://www.hotelsonarbangla.com/projects/joypur-forest/" target="_blank">Hotel Sonar Bangla Joypur Forest</a>`,
+      `<a href="https://www.mukherjeelodge.net/" target="_blank">New Mukherjee Lodge</a>`
+    ],
+    activities: ["Terracotta Temple Tour", "Local Handicraft Shopping", "Photography", "Cultural Walks"],
+    bestTime: "October to March for pleasant weather and sightseeing.",
+    howToReach: "You can reach Bishnupur via Bankura Railway Station or Kharagpur Junction, then hire a taxi or take local buses. By road, Bishnupur is well connected via NH14 from Kolkata (~150 km).",
+    localCuisine: ["Rasgulla", "Chhena Poda", "Pakhala Rice", "Local Bengali Dishes"],
+    festivals: ["Bishnupur Mela", "Gajan Festival", "Terracotta Festival"],
+    travelTips: ["Carry cash as small shops may not accept cards.", "Wear comfortable shoes for temple tours.", "Best to start early to cover all temples."]
+  },
+  "buxa": {
+    name: "Buxa",
+    description: "Wildlife sanctuary with dense forests and diverse fauna.",
+    gallery: ["img/Buxa1.png","img/Buxa2.png"],
+    hotels: [
+      `<a href="https://www.buxavalley.com/" target="_blank">Buxa Valley Homestay</a>`,
+      `<a href="https://www.expedia.com/Alipurduar-Hotels-Maa-Greenery-View.h37039287.Hotel-Information" target="_blank">Maa Greenery View</a>`,
+      `<a href="https://www.hotels.com/ho1067003072/hotel-bangabhumi-alipurduar-india/" target="_blank">Hotel Bangabhumi</a>`
+    ],
+    activities: ["Jungle Safari", "Bird Watching", "Nature Trails", "Photography"],
+    bestTime: "October to March for pleasant weather and wildlife spotting.",
+    howToReach: "Reach Alipurduar by train or bus from Kolkata. From Alipurduar, hire a taxi or take local transport to Buxa Tiger Reserve. Ensure prior permission for forest entry.",
+    localCuisine: ["Bengali Thali", "Local Fish Curry", "Rice and Lentils", "Seasonal Fruits"],
+    festivals: ["Buxa Wildlife Festival", "Local Tribal Fairs"],
+    travelTips: ["Carry insect repellent and sturdy shoes.", "Follow forest guidelines and avoid disturbing wildlife.", "Book accommodations in advance."]
+  },
+  "chandraketugarh": {
+    name: "Chandraketugarh",
+    description: "Archaeological site with ancient ruins and artifacts.",
+    gallery: ["img/Chandraketugarh1.png","img/Chandraketugarh2.png"],
+    hotels: [
+      `<a href="https://www.booking.com/hotel/in/vedic-village-spa-resort.html" target="_blank">Vedic Village Spa Resort</a>`,
+      `<a href="https://www.marriott.com/en-us/hotels/ccuft-fairfield-by-marriott-kolkata/" target="_blank">Fairfield by Marriott Kolkata</a>`,
+      `<a href="https://www.ihg.com/holidayinnexpress/hotels/us/en/kolkata/ccuap/hoteldetail" target="_blank">Holiday Inn Express Kolkata Airport</a>`
+    ],
+    activities: ["Explore Ruins", "Photography", "Historical Tours", "Guided Archaeology Walks"],
+    bestTime: "October to March for pleasant weather and comfortable exploration.",
+    howToReach: "Reach Kolkata by air, train, or road. From Kolkata, hire a taxi or take local transport to Chandraketugarh, located about 35 km from the city.",
+    localCuisine: ["Bengali Sweets", "Rice & Fish Curry", "Street Snacks", "Seasonal Fruits"],
+    festivals: ["Local Heritage Festival", "Cultural Programs at nearby towns"],
+    travelTips: ["Wear comfortable shoes for walking on uneven terrain.", "Carry water and a hat for sun protection.", "Hire a local guide for detailed historical insights."]
+  },
+  "garh-panchkot": {
+    name: "Garh Panchkot",
+    description: "Historical fort ruins amidst scenic hills.",
+    gallery: ["img/Garh Panchkot1.png","img/Garh Panchkot2.png"],
+    hotels: [
+      `<a href="https://panchetresidency.com/" target="_blank">Panchet Eco Resort</a>`,
+      `<a href="https://garhpanchkothotel.com/" target="_blank">Shilpe's Garh Panchkot Hills Agro</a>`,
+      `<a href="https://www.makemytrip.com/hotels/garh_panchkot_eco_tourism_unit_1-details-purulia.html" target="_blank">Baranti Eco Tourism Resort</a>`
+    ],
+    activities: ["Fort Exploration", "Hiking", "Photography", "Picnic Spots"],
+    bestTime: "October to March for cool and clear weather.",
+    howToReach: "Reach Purulia by train or bus from Kolkata. From Purulia, hire a taxi or drive (~40 km) to Garh Panchkot.",
+    localCuisine: ["Bengali Snacks", "Local Sweets", "Traditional Thalis"],
+    festivals: ["Local Fair at Baranti", "Purulia Chhau Dance Festival"],
+    travelTips: ["Carry water and snacks for hikes.", "Wear comfortable shoes for uneven terrain.", "Best to visit early morning or late afternoon for photography."]
+  },
+"jaldapara": {
+    name: "Jaldapara",
+    description: "Wildlife sanctuary known for one-horned rhinoceros and rich biodiversity.",
+    gallery: ["img/Jaldapara1.png","img/Jaldapara2.png"],
+    hotels: [
+      `<a href="https://wbtdcl.wbtourismgov.in/" target="_blank">Jaldapara Forest Tourist Lodge</a>`,
+      `<a href="https://www.hotels.com/ho1155520544/hotel-palacio-regency-alipurduar-india/" target="_blank">Hotel Palacio Regency</a>`,
+      `<a href="https://www.hotels.com/ho1155520544/hotel-palacio-regency-alipurduar-india/" target="_blank">Villa de Hollong</a>`
+    ],
+    activities: ["Jeep Safari", "Bird Watching", "Photography", "Nature Walks"],
+    bestTime: "November to April for pleasant weather and wildlife spotting.",
+    howToReach: "Reach Alipurduar or Hasimara by train or bus from Kolkata/Guwahati. From there, take a taxi or local transport (~20 km) to Jaldapara.",
+    localCuisine: ["Bengali Thalis", "River Fish Curry", "Local Snacks"],
+    festivals: ["Wildlife Week Celebrations", "Local Cultural Fairs"],
+    travelTips: ["Book safari in advance.", "Carry binoculars and camera.", "Wear comfortable clothing and insect repellent."]
+  },
+  "jorepokhri": {
+    name: "Jorepokhri",
+    description: "Tranquil lake surrounded by pine forests near Darjeeling, perfect for a peaceful retreat.",
+    gallery: ["img/Jorepokhri1.png","img/Jorepokhri2.png"],
+    hotels: [
+      `<a href="https://darjeeling.gov.in/accommodation/jorepokhri-tourist-lodge/" target="_blank">Jorepokhri Tourist Lodge</a>`,
+      `<a href="https://www.heritagebungalows.com/jorpokhri-bungalow/" target="_blank">Heritage Bungalow</a>`,
+      `<a href="https://www.tripadvisor.in/Hotel_Review-g304557-d455606-Reviews-New_Kundu_Hotel-Darjeeling_West_Bengal.html" target="_blank">New Kundu Hotel</a>`
+    ],
+    activities: ["Lake Walk", "Photography", "Picnics", "Nature Walks"],
+    bestTime: "March to May and September to November for clear skies and pleasant weather.",
+    howToReach: "Reach Darjeeling via NJP Railway Station or Bagdogra Airport (~70 km), then take a taxi or shared cab to Jorepokhri.",
+    localCuisine: ["Momos", "Thukpa", "Darjeeling Tea"],
+    festivals: ["Darjeeling Tea Festival", "Buddhist Losar Festival"],
+    travelTips: ["Carry warm clothes even in summer.", "Wear comfortable shoes for forest walks.", "Check weather before visiting."]
+},
+"kalimpong": {
+    name: "Kalimpong",
+    description: "Hill station famous for monasteries, flower nurseries, and vibrant local markets.",
+    gallery: ["img/Kalimpong1.png","img/Kalimpong2.png"],
+    hotels: [
+      `<a href="https://www.makemytrip.com/hotels/mountain_view-hotels-kalimpong-rv.html" target="_blank">Mayfair Himalayan Spa Resort</a>`,
+      `<a href="https://www.makemytrip.com/hotels/mountain_view-hotels-kalimpong-rv.html" target="_blank">Fortune Resort</a>`,
+      `<a href="https://www.makemytrip.com/hotels/mountain_view-hotels-kalimpong-rv.html" target="_blank">Gingko Home</a>`
+    ],
+    activities: ["Monastery Visits", "Local Market Shopping", "Hiking", "Photography"],
+    bestTime: "March to June and September to November for pleasant weather and blooming flowers.",
+    howToReach: "Reach by road from Siliguri (~75 km), or take NJP Railway Station and then a taxi (~80 km). Bagdogra Airport (~80 km) is nearest for air travel.",
+    localCuisine: ["Thukpa", "Momos", "Local Himalayan Tea"],
+    festivals: ["Kalimpong Christmas Festival", "Losar Festival"],
+    travelTips: ["Hire local guides for monastery tours.", "Carry cash as small shops may not accept cards.", "Start early for sunrise views."]
+},
+"mandarmani": {
+    name: "Mandarmani",
+    description: "Popular beach resort in East Midnapore, known for long sandy beaches and water sports.",
+    gallery: ["img/Mandarmani1.png","img/Mandarmani2.png"],
+    hotels: [
+      `<a href="https://www.hotelsonarbangla.com/mandarmani" target="_blank">Hotel Sonar Bangla</a>`,
+      `<a href="https://aqua-marina.in/" target="_blank">Aqua Marina Drive Inn</a>`,
+      `<a href="https://www.seastarresort.in/" target="_blank">Sea Star Resort</a>`
+    ],
+    activities: ["Beach Sports", "Sunset Views", "Jet Skiing", "Beach Volleyball"],
+    bestTime: "October to March for sunny weather and calm seas.",
+    howToReach: "Reach Digha by train, bus, or car (~170 km from Kolkata), then take local transport to Mandarmani (~12 km).",
+    localCuisine: ["Fresh Seafood", "Prawn Malai Curry", "Local Fish Fry"],
+    festivals: ["Beach Festivals in December", "Sand Art Competitions"],
+    travelTips: ["Carry sunscreen and hats.", "Avoid high tide zones.", "Book accommodations in advance during peak season."]
+},
+"mayurjharna": {
+    name: "Mayurjharna",
+    description: "Serene hill retreat known for waterfalls, lush greenery, and eco-tourism in West Bengal.",
+    gallery: ["img/Mayurjharna1.png","img/Mayurjharna2.png"],
+    hotels: [
+      `<a href="https://www.mayurjharna.com/" target="_blank">Mayurjharna Eco Resort</a>`,
+      `<a href="https://www.ecovillagebackpackers.com/" target="_blank">Sundarban Eco Village</a>`,
+      `<a href="https://www.mongla.com/" target="_blank">Mongla Eco Resort</a>`
+    ],
+    activities: ["Waterfall Trekking", "Nature Walks", "Bird Watching", "Photography"],
+    bestTime: "October to March for pleasant weather and trekking.",
+    howToReach: "Reach Mayurjharna via Kharagpur (~70 km) by road or taxi. Nearest railway stations are Kharagpur or Midnapore.",
+    localCuisine: ["Traditional Bengali Dishes", "River Fish Curry", "Local Snacks"],
+    festivals: ["Eco Tourism Week", "Local Cultural Fairs"],
+    travelTips: ["Carry trekking shoes and raincoat.", "Avoid littering in eco-zones.", "Hire local guides for waterfall treks."]
+},
+"murshidabad": {
+    name: "Murshidabad",
+    description: "Historic city along the Bhagirathi river, famous for Nawabi heritage, palaces, and rich culture.",
+    gallery: ["img/Murshidabad1.png","img/Murshidabad2.png"],
+    hotels: [
+      `<a href="https://www.nizamat.com/" target="_blank">Nizamat Hotel</a>`,
+      `<a href="https://www.kolkatatravel.com/" target="_blank">Kolkata Hotel</a>`,
+      `<a href="https://www.tripadvisor.in/Hotel_Review-g303892-d455606-Reviews-Murshidabad_Inn-Murshidabad_West_Bengal.html" target="_blank">Murshidabad Inn</a>`
+    ],
+    activities: ["Heritage Tour", "Palace Visits", "Local Handicraft Shopping", "Photography"],
+    bestTime: "October to March for cooler weather and sightseeing.",
+    howToReach: "Reach Murshidabad by train from Kolkata (~3-4 hours) or by road via NH12 (~220 km). Nearest airport is Netaji Subhash Chandra Bose Airport, Kolkata (~220 km).",
+    localCuisine: ["Murshidabadi Biryani", "Shukto", "Mishti Doi"],
+    festivals: ["Eid Celebrations", "Durga Puja", "Bengal Folk Festivals"],
+    travelTips: ["Hire local guides for heritage sites.", "Carry cash for local markets.", "Wear comfortable shoes for palace tours."]
+},
+"samsing": {
+    name: "Samsing",
+    description: "Scenic tea garden village in Dooars, perfect for trekking and nature immersion.",
+    gallery: ["img/Samsing1.png","img/Samsing2.png"],
+    hotels: [
+      `<a href="https://www.samsingecoresort.com/" target="_blank">Samsing Eco Resort</a>`,
+      `<a href="https://www.tripadvisor.in/Hotel_Review-g303892-d455606-Reviews-Samsing_Homestay-Samsing_West_Bengal.html" target="_blank">Samsing Homestay</a>`,
+      `<a href="https://www.samsingretreat.com/" target="_blank">Samsing Retreat</a>`
+    ],
+    activities: ["Tea Garden Trekking", "Nature Walks", "Bird Watching", "Photography"],
+    bestTime: "October to April for clear skies and lush greenery.",
+    howToReach: "Reach New Jalpaiguri or Siliguri by train/air, then take a taxi (~65 km) to Samsing.",
+    localCuisine: ["Local Dooars Cuisine", "Tea-based Snacks", "Bengali Thalis"],
+    festivals: ["Tea Harvest Festival", "Local Village Fairs"],
+    travelTips: ["Carry trekking shoes and binoculars.", "Respect local communities.", "Carry water and snacks for treks."]
+},
+"sandakphu": {
+    name: "Sandakphu",
+    description: "Highest peak in West Bengal, offering panoramic views of the Himalayas and adventure trekking.",
+    gallery: ["img/Sandakphu1.png","img/Sandakphu2.png"],
+    hotels: [
+      `<a href="https://www.singalilajunglecamp.com/" target="_blank">Singalila Jungle Camp</a>`,
+      `<a href="https://www.mountainlodge.com/" target="_blank">Mountain Lodge</a>`,
+      `<a href="https://www.tripadvisor.in/Hotel_Review-g303892-d455606-Reviews-Homestay_Basics-Sandakphu_West_Bengal.html" target="_blank">Homestay Basics</a>`
+    ],
+    activities: ["Trekking", "Photography", "Sunrise Viewing", "Bird Watching"],
+    bestTime: "March to May and September to November for clear mountain views.",
+    howToReach: "Reach Manebhanjan via NJP/Siliguri (~90 km), then trek or take jeeps to Sandakphu (~32 km trek).",
+    localCuisine: ["Bengali and Nepali Cuisine", "Momos", "Tea from local gardens"],
+    festivals: ["Trekking Festival", "Singalila Nature Week"],
+    travelTips: ["Carry warm clothes and trekking gear.", "Book accommodation in advance.", "Acclimatize to avoid altitude sickness."]
+},
+"sundarbans": {
+    name: "Sundarbans",
+    description: "Largest mangrove forest in the world, home to the Royal Bengal Tiger and diverse wildlife.",
+    gallery: ["img/Sundarbans1.png","img/Sundarbans2.png"],
+    hotels: [
+      `<a href="https://sundarbantigercamp.com/" target="_blank">Sundarban Tiger Camp</a>`,
+      `<a href="https://wbtdcl.wbtourismgov.in/" target="_blank">Sajnekhali Tourist Lodge</a>`,
+      `<a href="https://www.ecovillagebackpackers.com/" target="_blank">Backpackers Eco Village</a>`
+    ],
+    activities: ["Boat Safari", "Wildlife Watching", "Photography", "Village Visits"],
+    bestTime: "October to March for tiger spotting and calm river waters.",
+    howToReach: "Reach Kolkata by air/train/bus. Then take a bus/taxi (~100 km) to Godkhali or Canning, followed by a boat into the Sundarbans.",
+    localCuisine: ["Fresh River Fish", "Prawn Curry", "Local Mangrove Fruits"],
+    festivals: ["Sundarbans Mangrove Festival", "Rath Yatra in local villages"],
+    travelTips: ["Hire authorized guides and boats.", "Carry insect repellent.", "Avoid plastics in eco-sensitive areas."]
+},
+"digha": {
+    name: "Digha",
+    description: "Popular seaside town in West Bengal, famous for long sandy beaches and picturesque sunsets.",
+    gallery: ["img/Digha1.png", "img/Digha2.png"],
+    hotels: [
+      `<a href="https://www.hotelsonarbangla.com/digha" target="_blank">Hotel Sonar Bangla</a>`,
+      `<a href="https://www.tripadvisor.in/Hotel_Review-g303912-d1184386-Reviews-Seagull_Hotel-Digha_West_Bengal.html" target="_blank">Seagull Hotel</a>`,
+      `<a href="https://www.seastarresort.in/" target="_blank">Sea Star Resort</a>`
+    ],
+    activities: ["Beach Walks", "Sunset Viewing", "Local Seafood Tasting", "Water Sports"],
+    bestTime: "October to March for sunny weather and calm beaches.",
+    howToReach: "Reach Digha via train from Howrah/Kolkata (~185 km), by bus (~180 km), or by private car. Nearest airport is Kolkata (~185 km).",
+    localCuisine: ["Fresh Seafood", "Fish Fry", "Prawn Curry", "Coconut-based Sweets"],
+    festivals: ["Beach Festival in December", "Sand Art Competition"],
+    travelTips: ["Carry sunscreen and hats.", "Avoid crowded areas on weekends.", "Check tide timings before swimming."]
+}
+
+};
+
+const params = new URLSearchParams(window.location.search);
+const place = params.get('place'); 
+
+if(place && destinations[place]) {
+  const dest = destinations[place];
+  document.getElementById('dest-name').textContent = dest.name;
+  document.getElementById('dest-description').textContent = dest.description;
+  document.getElementById('dest-gallery').innerHTML = dest.gallery.map(img => `<img src="${img}" alt="${dest.name}">`).join('');
+  document.getElementById('dest-hotels').innerHTML = dest.hotels.map(h => `<li>${h}</li>`).join('');
+  document.getElementById('dest-activities').innerHTML = dest.activities.map(a => `<li>${a}</li>`).join('');
+  document.getElementById('dest-besttime').innerHTML = `<li>${dest.bestTime}</li>`;
+  document.getElementById('dest-reach').innerHTML = `<li>${dest.howToReach}</li>`;
+
+  // Populate new cards
+  document.getElementById('dest-cuisine').innerHTML = dest.localCuisine.map(i => `<li>${i}</li>`).join('');
+  document.getElementById('dest-festivals').innerHTML = dest.festivals.map(i => `<li>${i}</li>`).join('');
+  document.getElementById('dest-tips-card').innerHTML = dest.travelTips.map(t => `<li>${t}</li>`).join('');
+
+} else {
+  document.getElementById('destination-container').textContent = "Destination not found!";
+}
+</script>
+</body>
+</html>

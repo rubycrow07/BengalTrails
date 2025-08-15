@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Best Hotels • BengalTrails</title>
+  <link rel="icon" type="image/png" href="img/logo.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    /* Base Styles */
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #fdfcfb, #e2d1c3);
+      margin: 0;
+      padding: 2rem;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 2.5rem;
+      color: #333;
+    }
+
+    /* Location Section */
+    .location-section {
+      margin-bottom: 2rem;
+      background: rgba(255, 255, 255, 0.45);
+      border-radius: 16px;
+      padding: 1rem;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .location-section:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .location-title {
+      font-size: 1.6rem;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 1rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+    }
+
+    .toggle-icon {
+      font-size: 1.2rem;
+      transition: transform 0.3s ease;
+    }
+
+    .collapsed .toggle-icon {
+      transform: rotate(-90deg);
+    }
+
+    .hotel-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      transition: max-height 0.3s ease;
+    }
+
+    .hotel-cards.collapsed {
+      display: none;
+    }
+
+    .hotel-card {
+      background: #fff;
+      padding: 1rem 1.2rem;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .hotel-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    .hotel-name {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #222;
+    }
+
+    .hotel-tag {
+      font-size: 0.9rem;
+      color: #555;
+      margin: 4px 0;
+    }
+
+    .hotel-link {
+      display: inline-block;
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      color: #007bff;
+      text-decoration: none;
+      word-break: break-word;
+    }
+
+    .hotel-link:hover {
+      text-decoration: underline;
+      color: #0056b3;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      body { padding: 1rem; }
+      .location-title { font-size: 1.4rem; }
+      .hotel-name { font-size: 1.1rem; }
+      .hotel-tag { font-size: 0.85rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Best Hotels in West Bengal</h1>
+
+  <script>
+    const data = {
+      "Darjeeling": [
+        ["Mayfair Himalayan Spa", "Luxury • ₹6,500/night", "https://www.mayfairhotels.com/mayfair-darjeeling/"],
+        ["Sinclairs Darjeeling", "Mid-range • ₹4,000/night", "https://www.sinclairshotels.com/darjeeling/"],
+        ["Dekeling Hotel", "Budget • ₹2,000/night", "https://udaanhotels.com/"]
+      ],
+      "Kalimpong": [
+        ["Mayfair Himalayan Spa Resort", "Luxury • ₹5,334/night", "https://www.makemytrip.com/hotels/mountain_view-hotels-kalimpong-rv.html"],
+        ["Fortune Resort", "Mid-range • ₹4,499/night", "https://www.makemytrip.com/hotels/mountain_view-hotels-kalimpong-rv.html"],
+        ["Gingko Home", "Budget • ₹2,200/night", "https://www.makemytrip.com/hotels/mountain_view-hotels-kalimpong-rv.html"]
+      ],
+      "Bishnupur": [
+        ["Hotel Annapurna", "Luxury • ₹2,600–₹3,000/night", "https://annapurnahotel.in/"],
+        ["Hotel Sonar Bangla Joypur Forest", "Mid-range • ₹2,000–₹2,500/night", "https://www.hotelsonarbangla.com/projects/joypur-forest/"],
+        ["New Mukherjee Lodge", "Budget • ₹500–₹1,000/night", "https://www.mukherjeelodge.net/"]
+      ],
+      "Buxa": [
+        ["Buxa Valley Homestay", "Mid-range • ₹3,000–₹3,500/night", "https://www.buxavalley.com/"],
+        ["Maa Greenery View", "Budget • ₹2,500–₹3,000/night", "https://www.expedia.com/Alipurduar-Hotels-Maa-Greenery-View.h37039287.Hotel-Information"],
+        ["Hotel Bangabhumi", "Mid-range • ₹2,500–₹3,000/night", "https://www.hotels.com/ho1067003072/hotel-bangabhumi-alipurduar-india/"]
+      ],
+      "Garh Panchkot": [
+        ["Panchet Residency", "Mid-range • ₹3,500–₹4,000/night", "https://panchetresidency.com/"],
+        ["Shilpe's Garh Panchkot Hills Agro", "Mid-range • ₹3,000–₹3,500/night", "https://garhpanchkothotel.com/"],
+        ["Gar Panchkot Eco Resort", "Budget • ₹1,800–₹2,200/night", "https://www.makemytrip.com/hotels/garh_panchkot_eco_tourism_unit_1-details-purulia.html"]
+      ],
+      "Jaldapara": [
+        ["Jaldapara Forest Tourist Lodge", "Budget • ₹1,000–₹1,500/night", "https://wbtdcl.wbtourismgov.in/"],
+        ["Hotel Palacio Regency", "Mid-range • ₹2,000–₹2,500/night", "https://hotelpalacio.in/"],
+        ["Villa de Hollong", "Mid-range • ₹2,400–₹2,800/night", "https://www.hollongecoresort.com/"]
+      ],
+      "Jorepokhri": [
+        ["Eeshan Resorts and Hotels", "Price varies • Check website", "https://eeshanresortsandhotels.com/"],
+        ["GTA Tourist Lodge", "Price varies • Check website", "https://accommodation.darjeelingkalimpongtourism.com/"],
+        ["Heritage Bungalow", "Mid-range • ₹2,500–₹3,000/night", "https://www.heritagebungalows.com/jorpokhri-bungalow/"]
+      ],
+      "Sandakphu": [
+        ["Singalila Jungle Camp", "Luxury • ₹6,000–₹6,500/night", "https://www.singalilajunglecamp.com/"],
+        ["Sandakphu Mountain Lodge", "Mid-range • Contact for rates", "https://www.wbtourism.gov.in/"],
+        ["Sunrise Homestay Sandakphu", "Budget • Contact +91 94340 62299", "tel:+919434062299"]
+      ],
+      "Sundarbans": [
+        ["Sundarban Tiger Roar Resort", "Luxury • Price varies", "https://www.sundarbantigerroarresort.com/"],
+        ["Sajnekhali Tourist Lodge", "Mid-range • Price varies", "https://sajnekhali-tourist-lodge-south-24-parganas-wbtdc.hotelsgds.com/"],
+        ["Sunderban Mangrove", "Mid-range • Price varies", "https://www.sunderbanmangrove.com/"]
+      ],
+      "Mandarmani": [
+        ["Shinjini Resort", "Price varies", "https://www.resortshinjini.com/"],
+        ["ADB Kanvas", "Price varies", "https://www.adbkanvas.com/mandarmani"],
+        ["Prime B Resort", "Price varies", "https://www.primebresort.com/rooms.html"]
+      ],
+      "Mayurjharna": [
+        ["Sonajhuri Eco Resort (Purulia)", "Mid-range • ₹2,500–₹3,500/night", "tel:+919932345678"],
+        ["Charmurti Homestay (Kakrajhor)", "Budget • ₹1,200–₹1,800/night", "tel:+919832123456"],
+        ["Ajodhya Hills Eco Resort", "Mid-range • ₹3,000–₹3,800/night", "tel:+919474765432"]
+      ],
+      "Murshidabad": [
+        ["Nizamat Hotel", "Luxury • ₹4,000–₹4,500/night", "https://www.nizamat.com/"],
+        ["Rang Mahal Hotel (Sk Mistri)", "Mid-range • ₹2,500–₹3,000/night", "tel:+919474065983"],
+        ["Murshidabad Tourist Lodge (WBTDC)", "Budget • ₹1,200–₹1,800/night", "https://www.wbtdcl.com/tour_hotel_info/Murshidabad_Florence.html"]
+      ],
+      "Samsing": [
+        ["Samsing Forest Rest House (WBFDC)", "Budget • forest bungalow", "https://northbengaltourism.com/government-resorts/samsing-forest-rest-house/"],
+        ["Suntalekhola Forest Bungalow (WBFDC)", "Mid-range • cottage-style", "https://northbengaltourism.com/government-resorts/suntalekhola-samsing/"],
+        ["Vip's Ruposhi Bangla Eco Resort (Chalsa)", "Mid-range • pool, garden", "https://www.booking.com/hotel/in/ruposhi-bangla-eco-resort-chalsa.html"]
+      ]
+    };
+
+    // Function to create hotel sections dynamically
+    const body = document.body;
+
+    for (let place in data) {
+      const section = document.createElement('div');
+      section.className = 'location-section';
+
+      const title = document.createElement('div');
+      title.className = 'location-title collapsed';
+      title.setAttribute('aria-expanded', 'false');
+      title.innerHTML = `${place} <span class="toggle-icon">▼</span>`;
+
+      const cards = document.createElement('div');
+      cards.className = 'hotel-cards collapsed';
+
+      data[place].forEach(([name, tag, url]) => {
+        const card = document.createElement('div');
+        card.className = 'hotel-card';
+
+        // If url starts with 'tel:', render as phone link
+        let linkHtml = '';
+        if (url.startsWith('tel:')) {
+          linkHtml = `<a class="hotel-link" href="${url}">Call: ${url.replace('tel:', '')}</a>`;
+        } else {
+          linkHtml = `<a class="hotel-link" href="${url}" target="_blank" rel="noopener noreferrer">Visit Website</a>`;
+        }
+
+        card.innerHTML = `
+          <div class="hotel-name">${name}</div>
+          <div class="hotel-tag">${tag}</div>
+          ${linkHtml}
+        `;
+        cards.appendChild(card);
+      });
+
+      title.onclick = () => {
+        cards.classList.toggle('collapsed');
+        title.classList.toggle('collapsed');
+        const expanded = title.classList.contains('collapsed') ? 'false' : 'true';
+        title.setAttribute('aria-expanded', expanded);
+      };
+
+      section.appendChild(title);
+      section.appendChild(cards);
+      body.appendChild(section);
+    }
+  </script>
+</body>
+</html>
